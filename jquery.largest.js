@@ -5,38 +5,40 @@
 
 
 
-(function($){
+ (function($){
 
   $.fn.TallestInSet = function(settings) {
-     
+    
     var config = {};
- 
+    
     if (settings) $.extend(config, settings);
+    
+
+    var maxHeight = 0;
+    var maxWidth = 0;
+    
+    
+    this.each(function() { 
+      maxHeight = ($(this).height() > maxHeight ? $(this).height() : maxHeight);
+
+      maxWidth = ($(this).width() > maxWidth ? $(this).width() : maxWidth);
+
       
-
-      var maxHeight = 0;
-      var maxWidth = 0;
-      this.each(function() { 
-        maxHeight = ($(this).height() > maxHeight ? $(this).height() : maxHeight);
-
-        maxWidth = ($(this).width() > maxWidth ? $(this).width() : maxWidth);
-
-             
-      });
-      return maxHeight;
-      
+    });
+    return maxHeight;
+    
   }
 
 
   $.fn.UniformHeight = function(settings) {
-     
+    
     var config = {};
- 
+    var config = {reset:false};
     if (settings) $.extend(config, settings);
-      
-
-    this.css('height',this.TallestInSet());
-      
+    
+    if (config.reset) this.css('height','')
+      this.css('height',this.TallestInSet());
+    return this; 
   }
 
-  })(jQuery);
+ })(jQuery);

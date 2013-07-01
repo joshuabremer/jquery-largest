@@ -14,5 +14,7 @@ TallestInSet in set will find the tallest element in the group and return that h
 
 UniformHeight will set the height for all the items to the tallest element in the group.
 
+- Set reset = true to reset the heights from their natural heights e.g. $(selector).UniformHeight({reset:true})
+
 
 
